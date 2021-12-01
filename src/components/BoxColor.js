@@ -1,20 +1,26 @@
-import React, { Component } from 'react'
+function BoxColor(props) {
+    const { r, g, b } = props;
+    let red = r;
+    let green = g;
+    let blue = b;
 
- class BoxColor extends Component {
-    render() {
-        let {r, g, b}= this.props
-        let hex = '#' + ('0'+ r.toString(16)).substr(-2) + ('0'+ g.toString(16)).substr(-2) + ('0'+ r.toString(16)).substr(-2)
-        let color = 'white'
-        if (r+g+b > 127 * 3){
-            color = 'black'
-        }
-        return (
-            <div id='BoxColor' style={{backgroundColor: `rgb(${r},${g},${b})`, color: color}}>
-                rgb ({r}, {g}, {b})<br/>
-                {hex}
-            </div>
-        )
-    }
+    red = r.toString(16);
+    green = g.toString(16);
+    blue = b.toString(16);
+
+    if (red.length === 1)
+        red = "0" + red;
+    if (green.length === 1)
+        green = "0" + green;
+    if (blue.length === 1)
+        blue = "0" + blue;
+
+    return (
+        <div style={{ backgroundColor: 'rgb(' + r + ',' + g + ',' + b + ')' }} id="boxColor">
+            <p>rgb({r}, {g}, {b})</p>
+            <p>#{red}{green}{blue}</p>
+        </div>
+    )
 }
 
 export default BoxColor;
